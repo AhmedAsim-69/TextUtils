@@ -8,9 +8,8 @@ function App() {
     <>
       <Navbar title="TextUtils" aboutText="About Us"/>
       <div className="container"> 
-        <TextForm/>
+        <TextForm title="Uppercase Your Text" label="Enter text"/>
       </div>
-
     </>
   );
 }
