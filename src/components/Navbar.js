@@ -1,41 +1,10 @@
-import React, {useState} from "react";
+import React from "react";
 import PropTypes from 'prop-types'
 
 
 export default function Navbar(props) {
-  const [themeMode, setThemeMode] = useState({
-    mode : "light",
-    color: "white",
-    backgroundColor: "black"
-  })
-
-  const [btnText, setBtnText] = useState("Enable Dark Mode")
-  const [navTheme, setnavTheme] = useState("light")
-
-  const toggleThemeMode = ()=>{
-    if(themeMode.mode === "light"){
-      setThemeMode({
-        mode: "dark",
-        color: "black",
-        backgroundColor: "white"
-      })
-      setnavTheme("dark")
-      setBtnText("Enable Light Mode")
-    }
-    else{
-      setThemeMode({
-        mode: "light",
-        color: "white",
-        backgroundColor: "black"
-      })
-      setnavTheme("light")
-      setBtnText("Enable Dark Mode")
-      
-    }
-  }
-
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary py-1"data-bs-theme={navTheme}>
+    <nav className={`navbar navbar-expand-lg bg-body-tertiary py-1`} data-bs-theme={props.themeMode}>
       <div className="container-fluid">
         <a className="navbar-brand" href="/">{props.title}</a>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,7 +29,7 @@ export default function Navbar(props) {
             </li>
           </div>
         </div>
-        <button className="btn btn-light" style={themeMode} onClick={toggleThemeMode}>{btnText}</button>
+        <button className={`btn btn-${props.themeMode === "light" ? "dark" : "light"}`} onClick={props.toggleThemeMode} >{props.btnText}</button>
         <nav className="navbar bg-body-tertiary">
             <div className="container-fluid">
                 <form className="d-flex" role="search">
