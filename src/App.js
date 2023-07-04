@@ -4,6 +4,13 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
 import Alert from "./components/Alert";
+import About from "./components/About";
+
+import {
+  BrowserRouter,
+  Route,
+  Routes
+} from "react-router-dom";
 
 function App() {
   const [themeMode, setThemeMode] = useState("light")
@@ -38,11 +45,20 @@ function App() {
   
   return (
     <>
-      <Navbar title="TextUtils" aboutText="About Us" themeMode={themeMode} toggleThemeMode={toggleThemeMode} btnText={btnText}/>
-      <Alert alert={alert}/>
-      <div className="container"> 
-        <TextForm title="Uppercase Your Text" label="Enter text" themeMode={themeMode}/>
-      </div>
+      <BrowserRouter>
+        <Navbar title="TextUtils" aboutText="About Us" themeMode={themeMode} toggleThemeMode={toggleThemeMode} btnText={btnText}/>
+        <Alert alert={alert}/>
+        <div className="container"> 
+          <Routes>
+
+            <Route exact path="/about" element={<About/>}>
+              </Route>
+            <Route exact path="/" element={<TextForm title="Uppercase Your Text" label="Enter text" themeMode={themeMode}/>}>
+              </Route>
+            
+          </Routes>
+        </div>
+      </BrowserRouter>
     </>
   );
 }
