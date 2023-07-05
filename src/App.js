@@ -1,10 +1,10 @@
 import { useState } from "react";
 import "./App.css";
 
+import About from "./components/About";
+import Alert from "./components/Alert";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
-import Alert from "./components/Alert";
-import About from "./components/About";
 
 import {
   BrowserRouter,
@@ -46,14 +46,14 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Navbar title="TextUtils" aboutText="About Us" themeMode={themeMode} toggleThemeMode={toggleThemeMode} btnText={btnText}/>
+        <Navbar title="TextUtils" aboutText="About" themeMode={themeMode} toggleThemeMode={toggleThemeMode} btnText={btnText}/>
         <Alert alert={alert}/>
         <div className="container"> 
           <Routes>
 
-            <Route exact path="/about" element={<About/>}>
+            <Route exact path="/about" element={<About themeMode={themeMode}/>}>
               </Route>
-            <Route exact path="/" element={<TextForm title="Uppercase Your Text" label="Enter text" themeMode={themeMode}/>}>
+            <Route exact path="/" element={<TextForm title="Modify Your Text" label="Enter text" themeMode={themeMode} showAlert={showAlert}/>}>
               </Route>
             
           </Routes>
