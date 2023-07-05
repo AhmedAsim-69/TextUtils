@@ -15,7 +15,19 @@ export default function TextForm(props) {
         let newText = text.toLowerCase();
         setText(newText)
     }
-
+    const clearText = ()=>{
+        setText("")
+    }
+    const fixExtraSpaces = ()=>{
+        let newText = text.split(/[ ]+/);
+        setText(newText.join(" "));
+    }
+    const copyText = ()=>{
+        var text = document.getElementById("exampleFormControlTextarea1");
+        text.select();
+        text.setSelectionRange(0,9999);
+        navigator.clipboard.writeText(text.value);
+    }
     const textChanged = (event)=>{
         setText(event.target.value)
     }
@@ -33,6 +45,9 @@ export default function TextForm(props) {
         </div>
         <button className="btn btn-primary mx-2" onClick={upperCaseBtnClk}>Convert to UpperCase</button>
         <button className="btn btn-primary mx-2" onClick={lowerCaseBtnClk}>Convert to LowerCase</button>
+        <button className="btn btn-primary mx-2" onClick={clearText}>Clear Text</button>
+        <button className="btn btn-primary mx-2" onClick={copyText}>Copy Text</button>
+        <button className="btn btn-primary mx-2" onClick={fixExtraSpaces}>Fix Extra Spaces</button>
     </div>
     <div className={`container my-3 text-${props.themeMode === "light" ? "dark" : "light"}`}>
         <h1>Text Summary</h1>
