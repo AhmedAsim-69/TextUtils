@@ -59,12 +59,16 @@ function App() {
       setAlert(null);
     }, 3000);
   }
+
+  const dismissAlert = ()=>{
+    setAlert(null);
+  }
   
   return (
     <>
       <BrowserRouter>
         <Navbar title="TextUtils" aboutText="About" themeMode={themeMode} toggleThemeMode={toggleThemeMode} btnText={btnText}/>
-        <Alert alert={alert}/>
+        <Alert alert={alert} dismiss={dismissAlert}/>
         <div className="container"> 
           <Routes>
 
