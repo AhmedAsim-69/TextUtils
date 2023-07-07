@@ -26,10 +26,7 @@ export default function TextForm(props) {
         props.showAlert("Removed extra spaces successfully", "success");
     }
     const copyText = ()=>{
-        var text = document.getElementById("exampleFormControlTextarea1");
-        text.select();
-        document.getSelection().removeAllRanges();
-        navigator.clipboard.writeText(text.value);
+        navigator.clipboard.writeText(text);
         props.showAlert("Text copied to clipboard", "success");
     }
     const textChanged = (event)=>{
@@ -55,8 +52,8 @@ export default function TextForm(props) {
     </div>
     <div className={`container my-3 text-${props.themeMode === "light" ? "dark" : "light"}`}>
         <h1>Text Summary</h1>
-        <p>{text.split(" ").filter((event)=>{return event.length !== 0}).length} words, {text.length} characters</p>
-        <p>Read Time: {(0.008 * text.split(" ").filter((event)=>{return event.length !== 0}).length).toPrecision(3)} Minutes</p>
+        <p>{text.split(/\s+/).filter((event)=>{return event.length !== 0}).length} words, {text.length} characters</p>
+        <p>Read Time: {(0.008 * text.split(/\s+/).filter((event)=>{return event.length !== 0}).length).toPrecision(3)} Minutes</p>
         <h3>Preview</h3>
         <p>{(text.length === 0) ? "Please enter text to preview" : text}</p>
     </div>
