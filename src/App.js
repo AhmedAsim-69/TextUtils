@@ -17,18 +17,35 @@ function App() {
   const [alert, setAlert] = useState(null)
   const [btnText, setBtnText] = useState("Enable Dark Mode")
 
-  const toggleThemeMode = ()=>{
-    if(themeMode === 'light'){
-      setThemeMode("dark");
-      setBtnText("Enable Light Mode");
-      document.body.style.backgroundColor = "#212529";
-      showAlert("Dark mode has been Enabled", "success");
+    const removeBodyClasses = ()=>{
+      document.body.classList.remove('bg-light');
+      document.body.classList.remove('bg-dark');
+      document.body.classList.remove('bg-warning');
+      document.body.classList.remove('bg-success');
+      document.body.classList.remove('bg-danger');
+      document.body.classList.remove('bg-primary');
+      document.body.classList.remove('bg-secondary');
+    }
+
+  const toggleThemeMode = (typeIs)=>{
+    removeBodyClasses();
+    if(typeIs == null){
+      if(themeMode === 'light'){
+        setThemeMode("dark");
+        setBtnText("Enable Light Mode");
+        document.body.style.backgroundColor = "#212529";
+        showAlert("Dark mode has been Enabled", "success");
+      }
+      else{
+        setThemeMode('light');
+        setBtnText("Enable Dark Mode");
+        document.body.style.backgroundColor = "white";
+        showAlert("Light mode has been Enabled", "success");
+      }
     }
     else{
-      setThemeMode('light');
-      setBtnText("Enable Dark Mode");
-      document.body.style.backgroundColor = "white";
-      showAlert("Light mode has been Enabled", "success");
+      document.body.classList.add('bg-'+typeIs);
+      console.log(typeIs);
     }
 }
 

@@ -16,7 +16,13 @@ export default function Navbar(props) {
             <Link className="nav-link" to="/about">{props.aboutText}</Link>
           </div>
         </div>
-        <button className={`btn btn-${props.themeMode === "light" ? "dark" : "light"}`} onClick={props.toggleThemeMode} >{props.btnText}</button>
+        <div className="d-flex">
+          <button className="btn btn-primary rounded mx-2" onClick={()=>{props.toggleThemeMode('primary')}} style={{height: "30px", width:"30px"}}></button>
+          <button className="btn btn-success rounded mx-2" onClick={()=>{props.toggleThemeMode('success')}} style={{height: "30px", width:"30px"}}></button>
+          <button className="btn btn-danger rounded mx-2" onClick={()=>{props.toggleThemeMode('danger')}} style={{height: "30px", width:"30px"}}></button>
+          <button className="btn btn-warning rounded mx-2" onClick={()=>{props.toggleThemeMode('warning')}} style={{height: "30px", width:"30px"}}></button>
+        </div>
+        <button className={`btn btn-${props.themeMode === "light" ? "dark" : "light"}`} onClick={()=>{props.toggleThemeMode(null)}} >{props.btnText}</button>
         <nav className="navbar bg-body-tertiary">
             <div className="container-fluid">
                 <form className="d-flex" role="search">
