@@ -42,7 +42,7 @@ export default function TextForm(props) {
      style={{backgroundColor: props.themeMode === "dark" ? "dark" : "light"}}>
         <h1>{props.title}</h1>
         <div className="mb-3">
-            <label for="exampleFormControlTextarea1" clasNames="form-label">{props.label}</label>
+            <label htmlFor="exampleFormControlTextarea1" className="form-label">{props.label}</label>
             <textarea className="form-control" style={{backgroundColor: props.themeMode === "dark" ? "black" : "white",
              color: props.themeMode === "light" ? "black" : "white"}} 
              value={text} onChange={textChanged} id="exampleFormControlTextarea1" rows="8"></textarea>
